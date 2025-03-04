@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QCM Phrasal Verbs</title>
+    <style>
+        body, html {
+          height: 100%;
+          margin: 0;
+          font-family: Arial, sans-serif;
+          background-color: #fff;
+          color: #202020;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+        }
+        .container {
+          background: #fff;
+          color: #202020;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+          width: 100%;
+          max-width: 800px;
+          box-sizing: border-box;
+        }
+        h1 {
+          text-align: center;
+          margin-bottom: 20px;
+        }
+        .question {
+          margin-bottom: 20px;
+        }
+        .options {
+          list-style: none;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          margin-top: 50px;
+          margin-bottom: 20px;
+        }
+        .options li {
+          margin-bottom: 15px;
+          display: flex;
+          align-items: center;
+        }
+        .options input {
+          margin-right: 10px;
+        }
+        .btn {
+          display: block;
+          margin: 20px auto;
+          padding: 18px 22px;
+          background-color: #202020;
+          color: #fff;
+          text-align: center;
+          border-radius: 15px;
+          text-decoration: none;
+          font-size: 22px;
+          border: none;
+          cursor: pointer;
+          transition: all 0.4s;
+        }
+        .btn:hover {
+          background-color: #2c2c2c;
+        }
+        .correct {
+          color: green;
+          font-weight: bold;
+        }
+        .wrong {
+          color: red;
+          font-weight: bold;
+        }
+        .hidden {
+          display: none;
+        }
+        .final-result {
+          text-align: center;
+          margin-top: 20px;
+          font-size: 24px;
+        }
+        @media (max-width: 768px) {
+          .container {
+            width: 95%;
+            padding: 20px;
+          }
+          .btn {
+            font-size: 20px;
+            padding: 15px 20px;
+          }
+        }
+        @media (max-width: 480px) {
+          body {
+            align-items: flex-start;
+            padding-top: 20px;
+          }
+          h1 {
+            font-size: 30px;
+            text-align: left;
+            margin-bottom: 10px;
+          }
+          .container {
+            width: 100%;
+            padding: 15px;
+            box-shadow: none;
+          }
+          .question {
+            margin-bottom: 15px;
+          }
+          .options {
+            margin-top: 50px;
+            margin-bottom: 20px;
+            align-items: start;
+          }
+          .options li {
+            justify-content: center;
+            margin-bottom: 20px;
+          }
+          .btn {
+            width: 100%;
+            font-size: 18px;
+            padding: 15px;
+          }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>QCM Phrasal Verbs</h1>
+
+        <!-- Question 1 -->
+        <div id="question1" class="question">
+            <p>1. Several years _____ before he saw his parents again.</p>
+            <ul class="options" id="options1">
+                <li><input type="checkbox" id="q1-1" name="q1" value="went on"><label for="q1-1">went on</label></li>
+                <li><input type="checkbox" id="q1-2" name="q1" value="went by"><label for="q1-2">went by</label></li>
+                <li><input type="checkbox" id="q1-3" name="q1" value="went away"><label for="q1-3">went away</label></li>
+                <li><input type="checkbox" id="q1-4" name="q1" value="went through"><label for="q1-4">went through</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(1, ['went by'])">Submit</button>
+            <div id="result1" class="result hidden"></div>
+        </div>
+
+        <!-- Question 2 -->
+        <div id="question2" class="question hidden">
+            <p>2. Jane hasn't _____ her divorce with Mark.</p>
+            <ul class="options" id="options2">
+                <li><input type="checkbox" id="q2-1" name="q2" value="got through"><label for="q2-1">got through</label></li>
+                <li><input type="checkbox" id="q2-2" name="q2" value="got over"><label for="q2-2">got over</label></li>
+                <li><input type="checkbox" id="q2-3" name="q2" value="got away"><label for="q2-3">got away</label></li>
+                <li><input type="checkbox" id="q2-4" name="q2" value="got on"><label for="q2-4">got on</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(2, ['got over'])">Submit</button>
+            <div id="result2" class="result hidden"></div>
+        </div>
+
+        <!-- Question 3 -->
+        <div id="question3" class="question hidden">
+            <p>3. I twisted my ankle when I was _____ the train.</p>
+            <ul class="options" id="options3">
+                <li><input type="checkbox" id="q3-1" name="q3" value="getting in"><label for="q3-1">getting in</label></li>
+                <li><input type="checkbox" id="q3-2" name="q3" value="getting off"><label for="q3-2">getting off</label></li>
+                <li><input type="checkbox" id="q3-3" name="q3" value="getting on"><label for="q3-3">getting on</label></li>
+                <li><input type="checkbox" id="q3-4" name="q3" value="getting through"><label for="q3-4">getting through</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(3, ['getting off'])">Submit</button>
+            <div id="result3" class="result hidden"></div>
+        </div>
+
+        <!-- Question 4 -->
+        <div id="question4" class="question hidden">
+            <p>4. I have to _____ these CDs _____ to Katie. I borrowed them two weeks ago.</p>
+            <ul class="options" id="options4">
+                <li><input type="checkbox" id="q4-1" name="q4" value="give away to"><label for="q4-1">give away to</label></li>
+                <li><input type="checkbox" id="q4-2" name="q4" value="give back to"><label for="q4-2">give back to</label></li>
+                <li><input type="checkbox" id="q4-3" name="q4" value="give in to"><label for="q4-3">give in to</label></li>
+                <li><input type="checkbox" id="q4-4" name="q4" value="give out to"><label for="q4-4">give out to</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(4, ['give back to'])">Submit</button>
+            <div id="result4" class="result hidden"></div>
+        </div>
+
+        <!-- Question 5 -->
+        <div id="question5" class="question hidden">
+            <p>5. I heard people shouting in the street, and I went out to see what was _____.</p>
+            <ul class="options" id="options5">
+                <li><input type="checkbox" id="q5-1" name="q5" value="going by"><label for="q5-1">going by</label></li>
+                <li><input type="checkbox" id="q5-2" name="q5" value="going on"><label for="q5-2">going on</label></li>
+                <li><input type="checkbox" id="q5-3" name="q5" value="going away"><label for="q5-3">going away</label></li>
+                <li><input type="checkbox" id="q5-4" name="q5" value="going through"><label for="q5-4">going through</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(5, ['going on'])">Submit</button>
+            <div id="result5" class="result hidden"></div>
+        </div>
+
+        <!-- Question 6 -->
+        <div id="question6" class="question hidden">
+            <p>6. The teacher _____ the exam papers to the class.</p>
+            <ul class="options" id="options6">
+                <li><input type="checkbox" id="q6-1" name="q6" value="gave back"><label for="q6-1">gave back</label></li>
+                <li><input type="checkbox" id="q6-2" name="q6" value="gave out"><label for="q6-2">gave out</label></li>
+                <li><input type="checkbox" id="q6-3" name="q6" value="gave in"><label for="q6-3">gave in</label></li>
+                <li><input type="checkbox" id="q6-4" name="q6" value="gave away"><label for="q6-4">gave away</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(6, ['gave out'])">Submit</button>
+            <div id="result6" class="result hidden"></div>
+        </div>
+
+        <!-- Question 7 -->
+        <div id="question7" class="question hidden">
+            <p>7. I'm going to _____ all the clothes that I can't wear anymore.</p>
+            <ul class="options" id="options7">
+                <li><input type="checkbox" id="q7-1" name="q7" value="give away"><label for="q7-1">give away</label></li>
+                <li><input type="checkbox" id="q7-2" name="q7" value="give back"><label for="q7-2">give back</label></li>
+                <li><input type="checkbox" id="q7-3" name="q7" value="give in"><label for="q7-3">give in</label></li>
+                <li><input type="checkbox" id="q7-4" name="q7" value="give out"><label for="q7-4">give out</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(7, ['give away'])">Submit</button>
+            <div id="result7" class="result hidden"></div>
+        </div>
+
+        <!-- Question 8 -->
+        <div id="question8" class="question hidden">
+            <p>8. I really _____ my brother's wife. I've liked her since I first met her.</p>
+            <ul class="options" id="options8">
+                <li><input type="checkbox" id="q8-1" name="q8" value="get along with"><label for="q8-1">get along with</label></li>
+                <li><input type="checkbox" id="q8-2" name="q8" value="get off with"><label for="q8-2">get off with</label></li>
+                <li><input type="checkbox" id="q8-3" name="q8" value="get over with"><label for="q8-3">get over with</label></li>
+                <li><input type="checkbox" id="q8-4" name="q8" value="get on with"><label for="q8-4">get on with</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(8, ['get along with'])">Submit</button>
+            <div id="result8" class="result hidden"></div>
+        </div>
+
+        <!-- Question 9 -->
+        <div id="question9" class="question hidden">
+            <p>9. The trip _____ even if some people couldn't come at the last minute.</p>
+            <ul class="options" id="options9">
+                <li><input type="checkbox" id="q9-1" name="q9" value="went by"><label for="q9-1">went by</label></li>
+                <li><input type="checkbox" id="q9-2" name="q9" value="went on"><label for="q9-2">went on</label></li>
+                <li><input type="checkbox" id="q9-3" name="q9" value="went away"><label for="q9-3">went away</label></li>
+                <li><input type="checkbox" id="q9-4" name="q9" value="went through"><label for="q9-4">went through</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(9, ['went on'])">Submit</button>
+            <div id="result9" class="result hidden"></div>
+        </div>
+
+        <!-- Question 10 -->
+        <div id="question10" class="question hidden">
+            <p>10. He first _____ politics when he was studying at university.</p>
+            <ul class="options" id="options10">
+                <li><input type="checkbox" id="q10-1" name="q10" value="got into"><label for="q10-1">got into</label></li>
+                <li><input type="checkbox" id="q10-2" name="q10" value="got on"><label for="q10-2">got on</label></li>
+                <li><input type="checkbox" id="q10-3" name="q10" value="got away"><label for="q10-3">got away</label></li>
+                <li><input type="checkbox" id="q10-4" name="q10" value="got through"><label for="q10-4">got through</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(10, ['got into'])">Submit</button>
+            <div id="result10" class="result hidden"></div>
+        </div>
+
+        <!-- Question 11 -->
+        <div id="question11" class="question hidden">
+            <p>11. She tried to _____ her views at the meeting, but nobody could really understand what she wanted to say.</p>
+            <ul class="options" id="options11">
+                <li><input type="checkbox" id="q11-1" name="q11" value="get across"><label for="q11-1">get across</label></li>
+                <li><input type="checkbox" id="q11-2" name="q11" value="get around"><label for="q11-2">get around</label></li>
+                <li><input type="checkbox" id="q11-3" name="q11" value="get away with"><label for="q11-3">get away with</label></li>
+                <li><input type="checkbox" id="q11-4" name="q11" value="get by"><label for="q11-4">get by</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(11, ['get across'])">Submit</button>
+            <div id="result11" class="result hidden"></div>
+        </div>
+
+        <!-- Question 12 -->
+        <div id="question12" class="question hidden">
+            <p>12. He promised that he would _____ drinking alcohol after the summer holidays.</p>
+            <ul class="options" id="options12">
+                <li><input type="checkbox" id="q12-1" name="q12" value="give up"><label for="q12-1">give up</label></li>
+                <li><input type="checkbox" id="q12-2" name="q12" value="give in"><label for="q12-2">give in</label></li>
+                <li><input type="checkbox" id="q12-3" name="q12" value="give out"><label for="q12-3">give out</label></li>
+                <li><input type="checkbox" id="q12-4" name="q12" value="give away"><label for="q12-4">give away</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(12, ['give up'])">Submit</button>
+            <div id="result12" class="result hidden"></div>
+        </div>
+
+        <!-- Question 13 -->
+        <div id="question13" class="question hidden">
+            <p>13. When you are a student you have to learn to _____ with very little money.</p>
+            <ul class="options" id="options13">
+                <li><input type="checkbox" id="q13-1" name="q13" value="get by"><label for="q13-1">get by</label></li>
+                <li><input type="checkbox" id="q13-2" name="q13" value="get on"><label for="q13-2">get on</label></li>
+                <li><input type="checkbox" id="q13-3" name="q13" value="get through"><label for="q13-3">get through</label></li>
+                <li><input type="checkbox" id="q13-4" name="q13" value="get away"><label for="q13-4">get away</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(13, ['get by'])">Submit</button>
+            <div id="result13" class="result hidden"></div>
+        </div>
+
+        <!-- Question 14 -->
+        <div id="question14" class="question hidden">
+            <p>14. Uranium _____ radio-activity.</p>
+            <ul class="options" id="options14">
+                <li><input type="checkbox" id="q14-1" name="q14" value="gives off"><label for="q14-1">gives off</label></li>
+                <li><input type="checkbox" id="q14-2" name="q14" value="gives out"><label for="q14-2">gives out</label></li>
+                <li><input type="checkbox" id="q14-3" name="q14" value="gives in"><label for="q14-3">gives in</label></li>
+                <li><input type="checkbox" id="q14-4" name="q14" value="gives away"><label for="q14-4">gives away</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(14, ['gives off'])">Submit</button>
+            <div id="result14" class="result hidden"></div>
+        </div>
+
+        <!-- Question 15 -->
+        <div id="question15" class="question hidden">
+            <p>15. He _____ the toilet as soon as he got home.</p>
+            <ul class="options" id="options15">
+                <li><input type="checkbox" id="q15-1" name="q15" value="made for"><label for="q15-1">made for</label></li>
+                <li><input type="checkbox" id="q15-2" name="q15" value="headed for"><label for="q15-2">headed for</label></li>
+                <li><input type="checkbox" id="q15-3" name="q15" value="went to"><label for="q15-3">went to</label></li>
+                <li><input type="checkbox" id="q15-4" name="q15" value="got to"><label for="q15-4">got to</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(15, ['made for'])">Submit</button>
+            <div id="result15" class="result hidden"></div>
+        </div>
+
+        <!-- Question 16 -->
+        <div id="question16" class="question hidden">
+            <p>16. He _____ his colleagues because he thinks he's better than they are.</p>
+            <ul class="options" id="options16">
+                <li><input type="checkbox" id="q16-1" name="q16" value="looks down on"><label for="q16-1">looks down on</label></li>
+                <li><input type="checkbox" id="q16-2" name="q16" value="looks for"><label for="q16-2">looks for</label></li>
+                <li><input type="checkbox" id="q16-3" name="q16" value="looks back"><label for="q16-3">looks back</label></li>
+                <li><input type="checkbox" id="q16-4" name="q16" value="looks ahead"><label for="q16-4">looks ahead</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(16, ['looks down on'])">Submit</button>
+            <div id="result16" class="result hidden"></div>
+        </div>
+
+        <!-- Question 17 -->
+        <div id="question17" class="question hidden">
+            <p>17. When I was a child, my grandmother _____ me while my parents were at work.</p>
+            <ul class="options" id="options17">
+                <li><input type="checkbox" id="q17-1" name="q17" value="looked after"><label for="q17-1">looked after</label></li>
+                <li><input type="checkbox" id="q17-2" name="q17" value="looked ahead"><label for="q17-2">looked ahead</label></li>
+                <li><input type="checkbox" id="q17-3" name="q17" value="looked at"><label for="q17-3">looked at</label></li>
+                <li><input type="checkbox" id="q17-4" name="q17" value="looked around"><label for="q17-4">looked around</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(17, ['looked after'])">Submit</button>
+            <div id="result17" class="result hidden"></div>
+        </div>
+
+        <!-- Question 18 -->
+        <div id="question18" class="question hidden">
+            <p>18. The magazine _____ once a week.</p>
+            <ul class="options" id="options18">
+                <li><input type="checkbox" id="q18-1" name="q18" value="comes out"><label for="q18-1">comes out</label></li>
+                <li><input type="checkbox" id="q18-2" name="q18" value="comes across"><label for="q18-2">comes across</label></li>
+                <li><input type="checkbox" id="q18-3" name="q18" value="comes along"><label for="q18-3">comes along</label></li>
+                <li><input type="checkbox" id="q18-4" name="q18" value="comes through"><label for="q18-4">comes through</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(18, ['comes out'])">Submit</button>
+            <div id="result18" class="result hidden"></div>
+        </div>
+
+        <!-- Question 19 -->
+        <div id="question19" class="question hidden">
+            <p>19. We _____ the shop and decided that we didn't like anything enough to buy it.</p>
+            <ul class="options" id="options19">
+                <li><input type="checkbox" id="q19-1" name="q19" value="looked around"><label for="q19-1">looked around</label></li>
+                <li><input type="checkbox" id="q19-2" name="q19" value="looked at"><label for="q19-2">looked at</label></li>
+                <li><input type="checkbox" id="q19-3" name="q19" value="looked back"><label for="q19-3">looked back</label></li>
+                <li><input type="checkbox" id="q19-4" name="q19" value="looked ahead"><label for="q19-4">looked ahead</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(19, ['looked around'])">Submit</button>
+            <div id="result19" class="result hidden"></div>
+        </div>
+
+        <!-- Question 20 -->
+        <div id="question20" class="question hidden">
+            <p>20. I will only ask her about her new job if the topic _____ in the conversation.</p>
+            <ul class="options" id="options20">
+                <li><input type="checkbox" id="q20-1" name="q20" value="comes up"><label for="q20-1">comes up</label></li>
+                <li><input type="checkbox" id="q20-2" name="q20" value="comes across"><label for="q20-2">comes across</label></li>
+                <li><input type="checkbox" id="q20-3" name="q20" value="comes along"><label for="q20-3">comes along</label></li>
+                <li><input type="checkbox" id="q20-4" name="q20" value="comes through"><label for="q20-4">comes through</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(20, ['comes up'])">Submit</button>
+            <div id="result20" class="result hidden"></div>
+        </div>
+
+        <!-- Question 21 -->
+        <div id="question21" class="question hidden">
+            <p>21. The children _____ some fossils while they were playing on the beach.</p>
+            <ul class="options" id="options21">
+                <li><input type="checkbox" id="q21-1" name="q21" value="came across"><label for="q21-1">came across</label></li>
+                <li><input type="checkbox" id="q21-2" name="q21" value="came along"><label for="q21-2">came along</label></li>
+                <li><input type="checkbox" id="q21-3" name="q21" value="came out"><label for="q21-3">came out</label></li>
+                <li><input type="checkbox" id="q21-4" name="q21" value="came around"><label for="q21-4">came around</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(21, ['came across'])">Submit</button>
+            <div id="result21" class="result hidden"></div>
+        </div>
+
+        <!-- Question 22 -->
+        <div id="question22" class="question hidden">
+            <p>22. If you don't know the meaning of one of the words, just _____ it _____ in the dictionary.</p>
+            <ul class="options" id="options22">
+                <li><input type="checkbox" id="q22-1" name="q22" value="look up"><label for="q22-1">look up</label></li>
+                <li><input type="checkbox" id="q22-2" name="q22" value="look back"><label for="q22-2">look back</label></li>
+                <li><input type="checkbox" id="q22-3" name="q22" value="look ahead"><label for="q22-3">look ahead</label></li>
+                <li><input type="checkbox" id="q22-4" name="q22" value="look around"><label for="q22-4">look around</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(22, ['look up'])">Submit</button>
+            <div id="result22" class="result hidden"></div>
+        </div>
+
+        <!-- Question 23 -->
+        <div id="question23" class="question hidden">
+            <p>23. It took John a while to _____ after the cow kicked his head.</p>
+            <ul class="options" id="options23">
+                <li><input type="checkbox" id="q23-1" name="q23" value="come around"><label for="q23-1">come around</label></li>
+                <li><input type="checkbox" id="q23-2" name="q23" value="come along"><label for="q23-2">come along</label></li>
+                <li><input type="checkbox" id="q23-3" name="q23" value="come out"><label for="q23-3">come out</label></li>
+                <li><input type="checkbox" id="q23-4" name="q23" value="come through"><label for="q23-4">come through</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(23, ['come around'])">Submit</button>
+            <div id="result23" class="result hidden"></div>
+        </div>
+
+        <!-- Question 24 -->
+        <div id="question24" class="question hidden">
+            <p>24. The serious accident of her husband has been a very difficult situation to _____.</p>
+            <ul class="options" id="options24">
+                <li><input type="checkbox" id="q24-1" name="q24" value="get over"><label for="q24-1">get over</label></li>
+                <li><input type="checkbox" id="q24-2" name="q24" value="get through"><label for="q24-2">get through</label></li>
+                <li><input type="checkbox" id="q24-3" name="q24" value="get by"><label for="q24-3">get by</label></li>
+                <li><input type="checkbox" id="q24-4" name="q24" value="get on"><label for="q24-4">get on</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(24, ['get over'])">Submit</button>
+            <div id="result24" class="result hidden"></div>
+        </div>
+
+        <!-- Question 25 -->
+        <div id="question25" class="question hidden">
+            <p>25. He has been _____ a job for ages with no luck.</p>
+            <ul class="options" id="options25">
+                <li><input type="checkbox" id="q25-1" name="q25" value="looking for"><label for="q25-1">looking for</label></li>
+                <li><input type="checkbox" id="q25-2" name="q25" value="looking at"><label for="q25-2">looking at</label></li>
+                <li><input type="checkbox" id="q25-3" name="q25" value="looking back"><label for="q25-3">looking back</label></li>
+                <li><input type="checkbox" id="q25-4" name="q25" value="looking ahead"><label for="q25-4">looking ahead</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(25, ['looking for'])">Submit</button>
+            <div id="result25" class="result hidden"></div>
+        </div>
+
+        <!-- Question 26 -->
+        <div id="question26" class="question hidden">
+            <p>26. It wasn't easy to _____ the letters on the sign from the distance.</p>
+            <ul class="options" id="options26">
+                <li><input type="checkbox" id="q26-1" name="q26" value="make out"><label for="q26-1">make out</label></li>
+                <li><input type="checkbox" id="q26-2" name="q26" value="make up"><label for="q26-2">make up</label></li>
+                <li><input type="checkbox" id="q26-3" name="q26" value="make for"><label for="q26-3">make for</label></li>
+                <li><input type="checkbox" id="q26-4" name="q26" value="make up for"><label for="q26-4">make up for</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(26, ['make out'])">Submit</button>
+            <div id="result26" class="result hidden"></div>
+        </div>
+
+        <!-- Question 27 -->
+        <div id="question27" class="question hidden">
+            <p>27. As there is a train strike, we'll just have to _____ the meeting _____ until next week.</p>
+            <ul class="options" id="options27">
+                <li><input type="checkbox" id="q27-1" name="q27" value="put off"><label for="q27-1">put off</label></li>
+                <li><input type="checkbox" id="q27-2" name="q27" value="put on"><label for="q27-2">put on</label></li>
+                <li><input type="checkbox" id="q27-3" name="q27" value="put through"><label for="q27-3">put through</label></li>
+                <li><input type="checkbox" id="q27-4" name="q27" value="put out"><label for="q27-4">put out</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(27, ['put off'])">Submit</button>
+            <div id="result27" class="result hidden"></div>
+        </div>
+
+        <!-- Question 28 -->
+        <div id="question28" class="question hidden">
+            <p>28. He _____ in a crowd because of his height.</p>
+            <ul class="options" id="options28">
+                <li><input type="checkbox" id="q28-1" name="q28" value="stands out"><label for="q28-1">stands out</label></li>
+                <li><input type="checkbox" id="q28-2" name="q28" value="stands up"><label for="q28-2">stands up</label></li>
+                <li><input type="checkbox" id="q28-3" name="q28" value="stands by"><label for="q28-3">stands by</label></li>
+                <li><input type="checkbox" id="q28-4" name="q28" value="stands in"><label for="q28-4">stands in</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(28, ['stands out'])">Submit</button>
+            <div id="result28" class="result hidden"></div>
+        </div>
+
+        <!-- Question 29 -->
+        <div id="question29" class="question hidden">
+            <p>29. She _____ aerobics because her doctor told her she would have to get more exercise.</p>
+            <ul class="options" id="options29">
+                <li><input type="checkbox" id="q29-1" name="q29" value="took up"><label for="q29-1">took up</label></li>
+                <li><input type="checkbox" id="q29-2" name="q29" value="took in"><label for="q29-2">took in</label></li>
+                <li><input type="checkbox" id="q29-3" name="q29" value="took off"><label for="q29-3">took off</label></li>
+                <li><input type="checkbox" id="q29-4" name="q29" value="took over"><label for="q29-4">took over</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(29, ['took up'])">Submit</button>
+            <div id="result29" class="result hidden"></div>
+        </div>
+
+        <!-- Question 30 -->
+        <div id="question30" class="question hidden">
+            <p>30. As her parents had both died, she was _____ by her grandparents.</p>
+            <ul class="options" id="options30">
+                <li><input type="checkbox" id="q30-1" name="q30" value="brought up"><label for="q30-1">brought up</label></li>
+                <li><input type="checkbox" id="q30-2" name="q30" value="brought out"><label for="q30-2">brought out</label></li>
+                <li><input type="checkbox" id="q30-3" name="q30" value="brought in"><label for="q30-3">brought in</label></li>
+                <li><input type="checkbox" id="q30-4" name="q30" value="brought over"><label for="q30-4">brought over</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(30, ['brought up'])">Submit</button>
+            <div id="result30" class="result hidden"></div>
+        </div>
+
+        <!-- Question 31 -->
+        <div id="question31" class="question hidden">
+            <p>31. The weather is horrible at the moment. I hope it _____ later.</p>
+            <ul class="options" id="options31">
+                <li><input type="checkbox" id="q31-1" name="q31" value="clears up"><label for="q31-1">clears up</label></li>
+                <li><input type="checkbox" id="q31-2" name="q31" value="clears out"><label for="q31-2">clears out</label></li>
+                <li><input type="checkbox" id="q31-3" name="q31" value="clears away"><label for="q31-3">clears away</label></li>
+                <li><input type="checkbox" id="q31-4" name="q31" value="clears through"><label for="q31-4">clears through</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(31, ['clears up'])">Submit</button>
+            <div id="result31" class="result hidden"></div>
+        </div>
+
+        <!-- Question 32 -->
+        <div id="question32" class="question hidden">
+            <p>32. Don't stay in a hotel. We can _____ you _____ for a few days.</p>
+            <ul class="options" id="options32">
+                <li><input type="checkbox" id="q32-1" name="q32" value="put up"><label for="q32-1">put up</label></li>
+                <li><input type="checkbox" id="q32-2" name="q32" value="put out"><label for="q32-2">put out</label></li>
+                <li><input type="checkbox" id="q32-3" name="q32" value="put through"><label for="q32-3">put through</label></li>
+                <li><input type="checkbox" id="q32-4" name="q32" value="put off"><label for="q32-4">put off</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(32, ['put up'])">Submit</button>
+            <div id="result32" class="result hidden"></div>
+        </div>
+
+        <!-- Question 33 -->
+        <div id="question33" class="question hidden">
+            <p>33. The police _____ the house by breaking the front door.</p>
+            <ul class="options" id="options33">
+                <li><input type="checkbox" id="q33-1" name="q33" value="broke into"><label for="q33-1">broke into</label></li>
+                <li><input type="checkbox" id="q33-2" name="q33" value="broke out"><label for="q33-2">broke out</label></li>
+                <li><input type="checkbox" id="q33-3" name="q33" value="broke up"><label for="q33-3">broke up</label></li>
+                <li><input type="checkbox" id="q33-4" name="q33" value="broke down"><label for="q33-4">broke down</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(33, ['broke into'])">Submit</button>
+            <div id="result33" class="result hidden"></div>
+        </div>
+
+        <!-- Question 34 -->
+        <div id="question34" class="question hidden">
+            <p>34. You should _____ a small sum of money each week for the quarterly electricity bill.</p>
+            <ul class="options" id="options34">
+                <li><input type="checkbox" id="q34-1" name="q34" value="put aside"><label for="q34-1">put aside</label></li>
+                <li><input type="checkbox" id="q34-2" name="q34" value="put down"><label for="q34-2">put down</label></li>
+                <li><input type="checkbox" id="q34-3" name="q34" value="put off"><label for="q34-3">put off</label></li>
+                <li><input type="checkbox" id="q34-4" name="q34" value="put out"><label for="q34-4">put out</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(34, ['put aside'])">Submit</button>
+            <div id="result34" class="result hidden"></div>
+        </div>
+
+        <!-- Question 35 -->
+        <div id="question35" class="question hidden">
+            <p>35. The main problem with this flat is that we have to _____ such noisy neighbours.</p>
+            <ul class="options" id="options35">
+                <li><input type="checkbox" id="q35-1" name="q35" value="put up with"><label for="q35-1">put up with</label></li>
+                <li><input type="checkbox" id="q35-2" name="q35" value="put out with"><label for="q35-2">put out with</label></li>
+                <li><input type="checkbox" id="q35-3" name="q35" value="put through with"><label for="q35-3">put through with</label></li>
+                <li><input type="checkbox" id="q35-4" name="q35" value="put off with"><label for="q35-4">put off with</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(35, ['put up with'])">Submit</button>
+            <div id="result35" class="result hidden"></div>
+        </div>
+
+        <!-- Question 36 -->
+        <div id="question36" class="question hidden">
+            <p>36. The Worldwide Chemicals Company was recently _____ by its biggest rival.</p>
+            <ul class="options" id="options36">
+                <li><input type="checkbox" id="q36-1" name="q36" value="taken over"><label for="q36-1">taken over</label></li>
+                <li><input type="checkbox" id="q36-2" name="q36" value="taken in"><label for="q36-2">taken in</label></li>
+                <li><input type="checkbox" id="q36-3" name="q36" value="taken off"><label for="q36-3">taken off</label></li>
+                <li><input type="checkbox" id="q36-4" name="q36" value="taken up"><label for="q36-4">taken up</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(36, ['taken over'])">Submit</button>
+            <div id="result36" class="result hidden"></div>
+        </div>
+
+        <!-- Question 37 -->
+        <div id="question37" class="question hidden">
+            <p>37. You can see from his nose that he _____ his father.</p>
+            <ul class="options" id="options37">
+                <li><input type="checkbox" id="q37-1" name="q37" value="takes after"><label for="q37-1">takes after</label></li>
+                <li><input type="checkbox" id="q37-2" name="q37" value="takes in"><label for="q37-2">takes in</label></li>
+                <li><input type="checkbox" id="q37-3" name="q37" value="takes off"><label for="q37-3">takes off</label></li>
+                <li><input type="checkbox" id="q37-4" name="q37" value="takes over"><label for="q37-4">takes over</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(37, ['takes after'])">Submit</button>
+            <div id="result37" class="result hidden"></div>
+        </div>
+
+        <!-- Question 38 -->
+        <div id="question38" class="question hidden">
+            <p>38. The doctor advised him to _____ sugar.</p>
+            <ul class="options" id="options38">
+                <li><input type="checkbox" id="q38-1" name="q38" value="cut down on"><label for="q38-1">cut down on</label></li>
+                <li><input type="checkbox" id="q38-2" name="q38" value="cut out"><label for="q38-2">cut out</label></li>
+                <li><input type="checkbox" id="q38-3" name="q38" value="cut through"><label for="q38-3">cut through</label></li>
+                <li><input type="checkbox" id="q38-4" name="q38" value="cut up"><label for="q38-4">cut up</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(38, ['cut down on'])">Submit</button>
+            <div id="result38" class="result hidden"></div>
+        </div>
+
+        <!-- Question 39 -->
+        <div id="question39" class="question hidden">
+            <p>39. When they moved, they had to _____ many useless belongings.</p>
+            <ul class="options" id="options39">
+                <li><input type="checkbox" id="q39-1" name="q39" value="throw away"><label for="q39-1">throw away</label></li>
+                <li><input type="checkbox" id="q39-2" name="q39" value="throw out"><label for="q39-2">throw out</label></li>
+                <li><input type="checkbox" id="q39-3" name="q39" value="throw up"><label for="q39-3">throw up</label></li>
+                <li><input type="checkbox" id="q39-4" name="q39" value="throw over"><label for="q39-4">throw over</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(39, ['throw away'])">Submit</button>
+            <div id="result39" class="result hidden"></div>
+        </div>
+
+        <!-- Question 40 -->
+        <div id="question40" class="question hidden">
+            <p>40. The Spanish Civil War _____ in 1936.</p>
+            <ul class="options" id="options40">
+                <li><input type="checkbox" id="q40-1" name="q40" value="broke out"><label for="q40-1">broke out</label></li>
+                <li><input type="checkbox" id="q40-2" name="q40" value="broke into"><label for="q40-2">broke into</label></li>
+                <li><input type="checkbox" id="q40-3" name="q40" value="broke up"><label for="q40-3">broke up</label></li>
+                <li><input type="checkbox" id="q40-4" name="q40" value="broke down"><label for="q40-4">broke down</label></li>
+            </ul>
+            <button class="btn" onclick="validateQuestion(40, ['broke out'])">Submit</button>
+            <div id="result40" class="result hidden"></div>
+        </div>
+
+        <!-- Final Result -->
+        <div id="finalResult" class="final-result hidden">
+            <p>Your score: <span id="score"></span>%</p>
+        </div>
+
+    </div>
+
+    <script>
+        let currentQuestion = 1;
+        let correctCount = 0;
+
+        const questions = [
+            { question: "Several years _____ before he saw his parents again.", correctAnswers: ["went by"] },
+            { question: "Jane hasn't _____ her divorce with Mark.", correctAnswers: ["got over"] },
+            { question: "I twisted my ankle when I was _____ the train.", correctAnswers: ["getting off"] },
+            { question: "I have to _____ these CDs _____ to Katie. I borrowed them two weeks ago.", correctAnswers: ["give back to"] },
+            { question: "I heard people shouting in the street, and I went out to see what was _____.", correctAnswers: ["going on"] },
+            { question: "The teacher _____ the exam papers to the class.", correctAnswers: ["gave out"] },
+            { question: "I'm going to _____ all the clothes that I can't wear anymore.", correctAnswers: ["give away"] },
+            { question: "I really _____ my brother's wife. I've liked her since I first met her.", correctAnswers: ["get along with"] },
+            { question: "The trip _____ even if some people couldn't come at the last minute.", correctAnswers: ["went on"] },
+            { question: "He first _____ politics when he was studying at university.", correctAnswers: ["got into"] },
+            { question: "She tried to _____ her views at the meeting, but nobody could really understand what she wanted to say.", correctAnswers: ["get across"] },
+            { question: "He promised that he would _____ drinking alcohol after the summer holidays.", correctAnswers: ["give up"] },
+            { question: "When you are a student you have to learn to _____ with very little money.", correctAnswers: ["get by"] },
+            { question: "Uranium _____ radio-activity.", correctAnswers: ["gives off"] },
+            { question: "He _____ the toilet as soon as he got home.", correctAnswers: ["made for"] },
+            { question: "He _____ his colleagues because he thinks he's better than they are.", correctAnswers: ["looks down on"] },
+            { question: "When I was a child, my grandmother _____ me while my parents were at work.", correctAnswers: ["looked after"] },
+            { question: "The magazine _____ once a week.", correctAnswers: ["comes out"] },
+            { question: "We _____ the shop and decided that we didn't like anything enough to buy it.", correctAnswers: ["looked around"] },
+            { question: "I will only ask her about her new job if the topic _____ in the conversation.", correctAnswers: ["comes up"] },
+            { question: "The children _____ some fossils while they were playing on the beach.", correctAnswers: ["came across"] },
+            { question: "If you don't know the meaning of one of the words, just _____ it _____ in the dictionary.", correctAnswers: ["look up"] },
+            { question: "It took John a while to _____ after the cow kicked his head.", correctAnswers: ["come around"] },
+            { question: "The serious accident of her husband has been a very difficult situation to _____.", correctAnswers: ["get over"] },
+            { question: "He has been _____ a job for ages with no luck.", correctAnswers: ["looking for"] },
+            { question: "It wasn't easy to _____ the letters on the sign from the distance.", correctAnswers: ["make out"] },
+            { question: "As there is a train strike, we'll just have to _____ the meeting _____ until next week.", correctAnswers: ["put off"] },
+            { question: "He _____ in a crowd because of his height.", correctAnswers: ["stands out"] },
+            { question: "She _____ aerobics because her doctor told her she would have to get more exercise.", correctAnswers: ["took up"] },
+            { question: "As her parents had both died, she was _____ by her grandparents.", correctAnswers: ["brought up"] },
+            { question: "The weather is horrible at the moment. I hope it _____ later.", correctAnswers: ["clears up"] },
+            { question: "Don't stay in a hotel. We can _____ you _____ for a few days.", correctAnswers: ["put up"] },
+            { question: "The police _____ the house by breaking the front door.", correctAnswers: ["broke into"] },
+            { question: "You should _____ a small sum of money each week for the quarterly electricity bill.", correctAnswers: ["put aside"] },
+            { question: "The main problem with this flat is that we have to _____ such noisy neighbours.", correctAnswers: ["put up with"] },
+            { question: "The Worldwide Chemicals Company was recently _____ by its biggest rival.", correctAnswers: ["taken over"] },
+            { question: "You can see from his nose that he _____ his father.", correctAnswers: ["takes after"] },
+            { question: "The doctor advised him to _____ sugar.", correctAnswers: ["cut down on"] },
+            { question: "When they moved, they had to _____ many useless belongings.", correctAnswers: ["throw away"] },
+            { question: "The Spanish Civil War _____ in 1936.", correctAnswers: ["broke out"] }
+        ];
+
+        function shuffleOptions(optionsId) {
+            const optionsList = document.getElementById(optionsId);
+            for (let i = optionsList.children.length; i >= 0; i--) {
+                optionsList.appendChild(optionsList.children[Math.random() * i | 0]);
+            }
+        }
+
+        function validateQuestion(questionNumber, correctAnswers) {
+            const questionId = "question" + questionNumber;
+            const resultId = "result" + questionNumber;
+            const button = document.querySelector(`#${questionId} .btn`);
+            const resultDiv = document.getElementById(resultId);
+            resultDiv.innerHTML = ''; // Clear previous results
+
+            // Check all answers
+            const checkboxes = document.querySelectorAll(`#${questionId} input[type='checkbox']`);
+            let isCorrect = false;
+            checkboxes.forEach(checkbox => {
+                const label = checkbox.nextElementSibling;
+                if (correctAnswers.includes(checkbox.value)) {
+                    label.style.color = 'green';
+                    label.classList.add('correct');
+                    if (checkbox.checked) isCorrect = true;
+                } else {
+                    label.style.color = 'red';
+                    label.classList.add('wrong');
+                }
+                checkbox.disabled = true; // Disable checkbox after submission
+            });
+
+            // Update correct count
+            if (isCorrect) correctCount++;
+
+            // Show result
+            resultDiv.classList.remove('hidden');
+
+            // Change button text to "Next"
+            button.textContent = "Next";
+            button.onclick = function() {
+                document.getElementById(questionId).classList.add('hidden');
+                if (questionNumber < questions.length) {
+                    currentQuestion++;
+                    const nextQuestionId = "question" + currentQuestion;
+                    const nextButton = document.querySelector(`#${nextQuestionId} .btn`);
+                    document.getElementById(nextQuestionId).classList.remove('hidden');
+                    nextButton.textContent = "Submit";
+                    nextButton.onclick = function() {
+                        validateQuestion(currentQuestion, questions[currentQuestion - 1].correctAnswers);
+                    };
+                } else {
+                    showFinalResult();
+                }
+            };
+        }
+
+        function showFinalResult() {
+            const finalResultDiv = document.getElementById('finalResult');
+            const score = (correctCount / questions.length) * 100;
+            document.getElementById('score').textContent = score.toFixed(2);
+            finalResultDiv.classList.remove('hidden');
+        }
+
+        // Shuffle options on page load
+        window.onload = function() {
+            for (let i = 1; i <= questions.length; i++) {
+                shuffleOptions("options" + i);
+            }
+        };
+    </script>
+</body>
+</html>
